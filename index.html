@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aecreat.std</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            height: 100vh;
+            background-image: url('bg.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        header {
+            color: white;
+            height: 120vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        header .menu-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: white;
+        }
+
+        header nav {
+            display: flex;
+            gap: 20px;
+            position: absolute;
+            top: 20px;
+            right: 50px;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 15px;
+            border-radius: 20px;
+            transition: background 0.3s;
+        }
+
+        header nav a:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
+            margin: 10px 0; /* Berikan jarak vertikal antara elemen atas dan bawah */
+            padding: 0 30px; /* Berikan ruang horizontal di kiri dan kanan */
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.7);
+            margin: 1; /* Atur margin untuk elemen <p> jika terlalu besar */
+            padding: 0 15px; /* Tambahkan jarak horizontal */
+        }
+
+        header .btn {
+            padding: 12px 25px;
+            background: #faf7f6;
+            color: rgb(5, 0, 0);
+            text-decoration: none;
+            font-size: 1.1rem;
+            border-radius: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
+            transition: background 0.3s;
+        }
+
+        header .btn:hover {
+            background: #f8f7f7;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        section {
+            padding: 50px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 20px;
+        }
+
+        .about img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 4px solid #00182a;
+        }
+
+        .about div {
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            text-align: left;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .product {
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product img {
+            width: 100%; /* Pastikan gambar memenuhi container */
+            height: auto; /* Jaga proporsi gambar */
+            object-fit: contain; /* Sesuaikan gambar agar tidak terpotong */
+            max-height: 200px; /* Atur batas tinggi gambar agar seragam */
+        }
+
+        .product h3 {
+            margin: 10px 0;
+            font-size: 17px;
+        }
+
+        .product button {
+            margin: 10px;
+            padding: 10px 20px;
+            background: #171a4b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .product button:hover {
+            background: #0c113a;
+        }
+
+        .why-us {
+            background: #f9f9f9;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .why-us ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .why-us ul li {
+            margin: 15px 0;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1rem;
+        }
+
+        .why-us ul li::before {
+            content: '\2713';
+            position: absolute;
+            left: 0;
+            color: #151a75;
+            font-weight: bold;
+        }
+
+        .contact form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact form input,
+        .contact form textarea,
+        .contact form button {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+
+        .contact form button {
+            background: #4c66af;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .contact form button:hover {
+            background: #171a4b;
+        }
+
+        @media (max-width: 768px) {
+            .product img {
+                max-height: 300px; /* Kurangi tinggi gambar pada layar lebih kecil */
+                padding: 10px; /* Berikan ruang di sekitar header */
+                object-fit: cover; /* Agar gambar lebih memenuhi kontainer */
+            }
+
+            header {
+                background-size: contain; /* Sesuaikan gambar header untuk layar kecil */
+            }
+
+            header nav {
+                display: none;
+                flex-direction: column;
+                gap: 10px;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                background: rgba(0, 0, 0, 0.7);
+                border-radius: 10px;
+                padding: 20px;
+            }
+
+            header nav.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .about {
+                flex-direction: row;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <header>
+        <div class="menu-toggle">☰</div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#products">Products</a>
+            <a href="#why-us">Why Us</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <h1>Artwork from random ideas</h1>
+            <h2><p>An embodied idea. Discover the artwork I create that matches your energy!</p> </h2>
+            <h2><p>AECREAT.STD</p> </h2>
+        <a href="#products" class="btn">Shop now</a>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <img src="aena.jpeg" alt="Profile Picture">
+        <div>
+            <h2>About Me</h2>
+            <p>Name: Aena Farhatul Lael</p>
+            <p>NIM: 222303023</p>
+            <p>Address: Majalengka, Jawa Barat</p>
+        </div>
+    </section>
+ 
+    <!-- Products Section -->
+    <!-- Products Section -->
+    <h2>Our Products</h2>
+    <section id="products" class="products">
+        <div class="product">
+            <img src="1.jpeg" alt="Product 1">
+            <h3>Blue boxy T-shirt a foreign word</h3>
+            <p class="price">Rp. 250.000</p>
+            <button>Add to Cart</button>
+            <button class="order-now">Order Now</button>
+        </div>
+        <div class="product">
+            <img src="2.jpeg" alt="Product 2">
+            <h3>Brown boxy T-shirt a foreign word</h3>
+            <p class="price">Rp. 250.000</p>
+            <button>Add to Cart</button>
+            <button class="order-now">Order Now</button>
+        </div>
+        <div class="product">
+            <img src="3.jpeg" alt="Product 3">
+            <h3>Minden.std jersey oversize</h3>
+            <p class="price">Rp. 200.000</p>
+            <button>Add to Cart</button>
+            <button class="order-now">Order Now</button>
+        </div>
+        <div class="product">
+            <img src="4.jpeg" alt="Product 4">
+            <h3>Black boxy T-shirt shocked</h3>
+            <p class="price">Rp. 180.000</p>
+            <button>Add to Cart</button>
+            <button class="order-now">Order Now</button>
+        </div>
+        <div class="product">
+            <img src="5.jpeg" alt="Product 5">
+            <h3>Black boxy T-shirt MBOOK </h3>
+            <p class="price">Rp. 300.000</p>
+            <button>Add to Cart</button>
+            <button class="order-now">Order Now</button>
+        </div>
+        <div class="product">
+            <img src="6.jpeg" alt="Product 6">
+            <h3>Topi trucker shout out</h3>
+            <p class="price">Rp. 75.000</p>
+            <button>Add to Cart</button>
+            <button class="order-now">Order Now</button>
+        </div>
+        <div class="product">
+            <img src="7.jpeg" alt="Product 7">
+            <h3>Topi trucker XO</h3>
+            <p class="price">Rp. 75.000</p>
+            <button>Add to Cart</button>
+            <button class="order-now">Order Now</button>
+        </div>
+        <div class="product">
+            <img src="8.jpeg" alt="Product 8">
+            <h3>Handfan ver.ENHYPEN</h3>
+            <p class="price">Rp. 10.000</p>
+            <button>Add to Cart</button>
+            <button class="order-now">Order Now</button>
+        </div>
+        <div class="product">
+            <img src="9.jpeg" alt="Product 9">
+            <h3>Acrilyc keychain JK</h3>
+            <p class="price">Rp. 25.000</p>
+            <button>Add to Cart</button>
+            <button class="order-now">Order Now</button>
+        </div>
+        <div class="product">
+            <img src="10.jpeg" alt="Product 10">
+            <h3>Pin 44mm JAKE</h3>
+            <p class="price">Rp. 5.000</p>
+            <button>Add to Cart</button>
+            <button class="order-now">Order Now</button>
+        </div>
+    </section>
+
+
+        <!-- Why Choose Us Section -->
+        <section id="why-us" class="why-us">
+            <h2>Why Choose Us</h2>
+            <ul>
+                <li>High-quality products at affordable prices</li>
+                <li>Fast and reliable shipping</li>
+                <li>Excellent customer service</li>
+                <li>Wide variety of items to choose from</li>
+                <li>Trusted by thousands of satisfied customers</li>
+            </ul>
+        </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <form action="https://example.com/send-message" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <p>If you have any questions, feel free to contact us via WhatsApp:</p>
+        <a href="https://wa.me/6285759245732?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20produk!" target="_blank" class="btn">Chat with us on WhatsApp</a>
+    </section>
+
+
+    <script>
+        // JavaScript to toggle the menu on small screens
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('header nav');
+
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
